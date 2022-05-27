@@ -199,3 +199,8 @@ D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Administ
 D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Administration\Index.cshtml.g.cs
 D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Administration\NewRole.cshtml.g.cs
 D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Administration\NewUser.cshtml.g.cs
+D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Posts\Create.cshtml.g.cs
+D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Posts\Delete.cshtml.g.cs
+D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Posts\Details.cshtml.g.cs
+D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Posts\Edit.cshtml.g.cs
+D:\Developer\GitHub\ASP.NET-Blog\Blog\Blog\obj\Debug\net5.0\Razor\Views\Posts\Index.cshtml.g.cs

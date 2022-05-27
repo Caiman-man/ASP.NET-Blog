@@ -96,7 +96,6 @@ namespace Blog.Controllers
                     {
                         foreach (var item in rolesForUser.ToList())
                         {
-                            // item should be the name of the role
                             var result = await _userManager.RemoveFromRoleAsync(user, item);
                         }
                     }
@@ -107,7 +106,6 @@ namespace Blog.Controllers
                     // Фиксация транзакции удаления
                     transaction.Commit();
                 }
-
                 return RedirectToAction("Index");
             }
             else
@@ -117,7 +115,7 @@ namespace Blog.Controllers
         }
 
         //------------------------------------------------------------------------------------
-        //GET: /Administration/New - вызов формы для заполнения новой роли
+        //GET: /Administration/NewRole - вызов формы для заполнения новой роли
         [HttpGet, ActionName("NewRole")]
         public IActionResult CreateNewRole()
         {

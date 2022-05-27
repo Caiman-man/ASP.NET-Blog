@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
+﻿using Blog.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +6,9 @@ namespace Blog.Areas.Identity.Data
 {
     public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
     {
+        // добавляем список моделей Post
+        public virtual DbSet<Post> Posts { get; set; }
+
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
         {
