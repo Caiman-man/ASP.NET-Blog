@@ -8,7 +8,8 @@ namespace Blog.Migrations
         {
             //Users
             migrationBuilder.Sql(@"
-            INSERT INTO [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [FirstName], [LastName]) VALUES (N'230182ad-4dc4-4fee-b5af-56c8aa5daa65', N'admin@gmail.com', N'ADMIN@GMAIL.COM', N'admin@gmail.com', N'ADMIN@GMAIL.COM', 0, N'AQAAAAEAACcQAAAAEKnf45THz41zemDYrqUqFqSpANLkpjy7DH+a+XtntZHFTKWyrTU0cLS1A04Yvdnguw==', N'7CTOKVF2WLCZ7MKKPOTBHYHA7ZZEE5M3', N'1897b1ff-e828-4eaa-9474-637fd4b1522e', NULL, 0, 0, NULL, 1, 0, N'Admin', N'Admin')");
+            INSERT INTO [dbo].[AspNetUsers] ([Id], [UserName], [NormalizedUserName], [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [FirstName], [LastName]) VALUES (N'230182ad-4dc4-4fee-b5af-56c8aa5daa65', N'admin@gmail.com', N'ADMIN@GMAIL.COM', N'admin@gmail.com', N'ADMIN@GMAIL.COM', 0, N'AQAAAAEAACcQAAAAEKnf45THz41zemDYrqUqFqSpANLkpjy7DH+a+XtntZHFTKWyrTU0cLS1A04Yvdnguw==', N'7CTOKVF2WLCZ7MKKPOTBHYHA7ZZEE5M3', N'1897b1ff-e828-4eaa-9474-637fd4b1522e', NULL, 0, 0, NULL, 1, 0, N'Admin', N'Admin')
+            ");
 
             //roles
             migrationBuilder.Sql(@"
