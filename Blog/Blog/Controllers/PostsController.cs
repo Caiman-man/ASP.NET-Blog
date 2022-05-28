@@ -4,16 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Blog.Areas.Identity.Data;
 using Blog.Models;
+using Blog.ViewModels;
+using Blog.Services.FileManager;
 
 namespace Blog.Controllers
 {
     public class PostsController : Controller
     {
         private readonly ApplicationDBContext _context;
+        private readonly IFileManager _fileManager;
 
-        public PostsController(ApplicationDBContext context)
+        public PostsController(ApplicationDBContext context, IFileManager fileManager)
         {
             _context = context;
+            _fileManager = fileManager;
         }
 
         // GET: Posts
@@ -75,7 +79,13 @@ namespace Blog.Controllers
             {
                 return NotFound();
             }
-            return View(post);
+            //return View(post);
+            return View(new PostViewModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Body = post.Body
+            });
         }
 
         // POST: Posts/Edit/5
@@ -83,8 +93,17 @@ namespace Blog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated")] Post post)
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated")] PostViewModel model)
         {
+            var post = new Post
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Body = model.Body,
+                Image = await _fileManager.SaveImage(model.Image)
+            };
+
             if (id != post.Id)
             {
                 return NotFound();

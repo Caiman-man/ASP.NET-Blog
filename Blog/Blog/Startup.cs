@@ -1,5 +1,6 @@
 using Blog.Areas.Identity.Data;
 using Blog.Services;
+using Blog.Services.FileManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -47,6 +48,7 @@ namespace Blog
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IFileManager, FileManager>();
 
             // указание адреса страниц login, logout, accessdenied для сайта, нужно для правильной работы [Authorize]
             services.ConfigureApplicationCookie(options =>

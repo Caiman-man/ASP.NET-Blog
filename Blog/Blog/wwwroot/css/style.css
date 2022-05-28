@@ -426,7 +426,16 @@ button {
 }
 
 .our_img figure img {
-     width: 100%;
+    width: 100%;
+}
+
+.our_img2 figure {
+    margin: 0;
+}
+
+.our_img2 figure img {
+    max-height: 300px;
+    max-width: 300px
 }
 
 .awesome {
