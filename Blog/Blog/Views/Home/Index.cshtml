@@ -2,7 +2,129 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- banner -->
+<section class="banner_main">
+    <div class="container">
+        <div class="row d_flex">
+            <div class=" col-xl-12 col-lg-8 col-md-8 col-12-9">
+                <div class="text-bg">
+                    <h1>Welcome<br> <span class="white1">This is my personal blog</span></h1>
+                    <p>
+                        This blog contain a different information about me and my life</br>Also you can find here
+                        some actual news from the IT industry
+                    </p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end banner -->
+
+<!-- about -->
+<div id="about" class="blog_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>About Me</h2>
+                    <span>Let me introduce myself</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="our_two_box">
+                    <div class="row d_flex">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="our_img">
+                                <figure><img src="images/img1.jpg" alt="#" /></figure>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="our_text_box">
+                                <h3 class="awesome pa_wi">
+                                    My name is Alexander and this is my little corner of the internet
+                                </h3>
+                                <p>
+                                    I'm the voice, author, and creator behind this blog. What started as a casual hobby for
+                                    nights and weekends while I was studying programming, has now grown into a main goal in my
+                                    life.</br></br>Also my favourite things in life are playing drums and reading fantasy
+                                    books.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- end about -->
+<!-- my_blog -->
+<div id="my-blog" class="blog_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>My blog</h2>
+                    <span>Just a few words about this blog</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="our_two_box">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="our_img">
+                                <figure><img class="he_img" src="images/img2.png" alt="#" /></figure>
+                                <div class="our_text_box position_box">
+                                    <h3 class="awesome withi_color">
+                                        I like to share an important events in my life with other
+                                        people
+                                    </h3>
+                                    <p class="hiuouh">
+                                        And ofcource i like to share an important events in IT industry.</br>So
+                                        here
+                                        you can find not only posts about my life, but also a different news about programming,
+                                        design and IT trends.
+                                    </p>
+                                    <div class="text-bg">
+                                        <a class="nav-link" asp-area="" asp-controller="Posts" asp-action="Index">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end my_blog -->
+<!--  footer -->
+<footer class="footer_section">
+    <div class="footer_container">
+        <h3>Social</h3>
+        <a href="https://github.com/Caiman-man"><i class="fa fa-github"></i><span>GitHub</span></a>
+        <a href="https://t.me/IvanovDeveloper">
+            <i class="fa fa-telegram"
+               aria-hidden="true"></i><span>Telegram</span>
+        </a>
+        <a href="https://vk.com/id164452146"><i class="fa fa-vk" aria-hidden="false"></i><span>VK</span></a>
+    </div>
+    <div class="footer_container">
+        <h3>Contacts</h3>
+        <a href="#"><i class="fa fa-map-marker"></i><span>Location</span></a>
+        <a href="#"><i class="fa fa-phone"></i><span>+7-949-307-30-52</span></a>
+        <a href="#"><i class="fa fa-envelope"></i><span>alexdevp90@gmail.com</span></a>
+    </div>
+    <div class="footer_container">
+        <h3>Navigation</h3>
+        <a href="#header">Home</a>
+        <a href="#about">About</a>
+        <a asp-area="" asp-controller="Posts" asp-action="Index">Blog</a>
+    </div>
+</footer>
+<!-- end footer -->

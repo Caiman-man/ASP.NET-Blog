@@ -1,53 +1,58 @@
-﻿@model IEnumerable<Blog.Models.Post>
+﻿@using Microsoft.AspNetCore.Identity
+@using Blog.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model IEnumerable<Blog.Models.Post>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <main role="main" class="pb-3">
+        </br>
+        <p><b><a asp-action="Create">Create New</a></b></p>
+        
+        @foreach (var item in Model)
+        {
+            <div class="blog_main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="our_two_box">
+                                <div class="row d_flex">
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                        <div class="our_img">
+                                            <figure><img src="images/img1.jpg" alt="#" /></figure>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                        <div class="our_text_box">
+                                            <h3 class="awesome pa_wi">@Html.DisplayFor(modelItem => item.Title)</h3>
+                                            <p>@Html.DisplayFor(modelItem => item.Body)</p>
+                                            <p>@Html.DisplayFor(modelItem => item.DateCreated)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+                        {
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    </main>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Body)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
