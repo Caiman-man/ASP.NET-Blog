@@ -14,6 +14,8 @@ namespace Blog.ViewModels
         [Required(ErrorMessage = "Please enter a text")]
         public string Body { get; set; }
 
-        public IFormFile Image { get; set; } = null; 
+        public IFormFile Image { get; set; } = null;
+
+        public string CurrentImage { get; set; } = "";
     }
 }

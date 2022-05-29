@@ -79,20 +79,19 @@ namespace Blog.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
+
             var post = await _context.Posts.FindAsync(id);
+
             if (post == null)
-            {
                 return NotFound();
-            }
 
             return View(new PostViewModel
             {
                 Id = post.Id,
                 Title = post.Title,
-                Body = post.Body
+                Body = post.Body,
+                CurrentImage = post.Image
             });
         }
 
@@ -102,20 +101,22 @@ namespace Blog.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated")] Post post)
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated")] PostViewModel model)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Body,Image,DateCreated,CurrentImage")] PostViewModel model)
         {
             var post = new Post
             {
                 Id = model.Id,
                 Title = model.Title,
-                Body = model.Body,
-                Image = await _fileManager.SaveImage(model.Image)
+                Body = model.Body
             };
 
+            if (model.Image == null)
+                post.Image = model.CurrentImage;
+            else
+                post.Image = await _fileManager.SaveImage(model.Image);
+
             if (id != post.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -127,13 +128,9 @@ namespace Blog.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!PostExists(post.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -144,16 +141,13 @@ namespace Blog.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var post = await _context.Posts
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (post == null)
-            {
                 return NotFound();
-            }
 
             return View(post);
         }

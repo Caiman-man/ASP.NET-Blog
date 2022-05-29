@@ -26,7 +26,7 @@
                     <b>@Html.DisplayFor(model => model.Title)</b>
                 </dd>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Body)
+                    @Html.Raw(Model.Body)
                 </dd>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.DateCreated)

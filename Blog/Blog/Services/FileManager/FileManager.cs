@@ -20,9 +20,7 @@ namespace Blog.Services.FileManager
             {
                 var savePath = Path.Combine(_imagePath);
                 if (!Directory.Exists(savePath))
-                {
                     Directory.CreateDirectory(savePath);
-                }
 
                 var fileType = image.FileName.Substring(image.FileName.LastIndexOf('.'));
                 var fileName = $"img_{DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}{fileType}";
@@ -38,7 +36,6 @@ namespace Blog.Services.FileManager
             {
                 return "Error to save file";
             }
-            
         }
     }
 }
