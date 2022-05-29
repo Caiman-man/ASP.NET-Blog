@@ -11,9 +11,15 @@
 <div class="container">
     <main role="main" class="pb-3">
         </br>
-        <p><b><a asp-action="Create">Create New</a></b></p>
-        
-        @foreach (var item in Model)
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+            {
+                <p><b><a asp-action="Create">Create New</a></b></p>
+            }
+        }
+        @foreach (var item in Model.Reverse())
         {
             <div class="blog_main">
                 <div class="container">
@@ -30,7 +36,11 @@
                                         <div class="our_text_box">
                                             <h3 class="awesome pa_wi">@Html.DisplayFor(modelItem => item.Title)</h3>
                                             <p>@Html.DisplayFor(modelItem => item.Body)</p>
+                                            <br>
                                             <p>@Html.DisplayFor(modelItem => item.DateCreated)</p>
+                                        </div>
+                                        <div>
+                                            <a asp-action="Details" asp-route-id="@item.Id">Read more</a>
                                         </div>
                                     </div>
                                 </div>

@@ -47,7 +47,7 @@ namespace Blog.Controllers
         // GET: Posts/Create
         public IActionResult Create()
         {
-            return View();
+            return View(new PostViewModel());
         }
 
         // POST: Posts/Create
@@ -55,8 +55,17 @@ namespace Blog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Body,Image,DateCreated")] Post post)
+        //public async Task<IActionResult> Create([Bind("Id,Title,Body,Image,DateCreated")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,Body,Image,DateCreated")] PostViewModel model)
         {
+            var post = new Post
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Body = model.Body,
+                Image = await _fileManager.SaveImage(model.Image)
+            };
+
             if (ModelState.IsValid)
             {
                 _context.Add(post);
@@ -73,13 +82,12 @@ namespace Blog.Controllers
             {
                 return NotFound();
             }
-
             var post = await _context.Posts.FindAsync(id);
             if (post == null)
             {
                 return NotFound();
             }
-            //return View(post);
+
             return View(new PostViewModel
             {
                 Id = post.Id,
